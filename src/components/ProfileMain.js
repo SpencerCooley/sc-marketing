@@ -9,6 +9,7 @@ import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
 import ProfileMainStyles from "./profile-main.module.css";
 import me from "../static/me2sm.jpg"
+import speekme from "../static/speekme.png"
 
 const styles = theme => ({
   root: {
@@ -35,6 +36,8 @@ function ProfileMain(props) {
            <Paper elevation={4} style={{'padding':'10px', 'padding-bottom':'0px'}}>
              <img src={me} style={{'width':'100%', 'margin-bottom':'5px'}} />
            </Paper>
+
+
           </Grid>
 
           <Grid item xs={12} sm={7}>
