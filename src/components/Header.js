@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../static/logo.png";
+import logo from "../images/logo.png";
 
 const HeaderNav = styled.nav`
   background-color:white;

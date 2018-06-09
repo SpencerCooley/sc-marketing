@@ -8,8 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
 import ProfileMainStyles from "./profile-main.module.css";
-import me from "../static/me2sm.jpg"
-import speekme from "../static/speekme.png"
+import me from "../images/me2sm.jpg"
 
 const styles = theme => ({
   root: {
