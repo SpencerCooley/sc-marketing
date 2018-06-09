@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import Chip from '@material-ui/core/Chip';
 import ProfileMainStyles from "./profile-main.module.css";
-
+import me from "../static/me2sm.jpg"
 
 const styles = theme => ({
   root: {
@@ -24,7 +24,6 @@ const styles = theme => ({
   },
 });
 
-
 function ProfileMain(props) {
   const { classes } = props;
 
@@ -34,7 +33,7 @@ function ProfileMain(props) {
       <Grid container spacing={40} justify="center">
           <Grid item xs={12} sm={4}>
            <Paper elevation={4} style={{'padding':'10px', 'padding-bottom':'0px'}}>
-             <img src="http://spencercooley.com/static/app/public/images/me2.jpg" style={{'width':'100%', 'margin-bottom':'5px'}} />
+             <img src={me} style={{'width':'100%', 'margin-bottom':'5px'}} />
            </Paper>
           </Grid>
 

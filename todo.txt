@@ -1,0 +1,3 @@
+add og metadata
+add title and site metadata
+add google analytics

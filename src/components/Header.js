@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import logo from "../static/logo.png";
 
 const HeaderNav = styled.nav`
   background-color:white;
@@ -27,7 +28,7 @@ const HeaderNav = styled.nav`
 
 const Header = () => (
     <HeaderNav>
-      <img  style={{'marginLeft':'20px', 'marginBottom':'0px'}} src="http://spencercooley.com/static/app/public/images/logo.png" />
+      <img  style={{'marginLeft':'20px', 'marginBottom':'0px'}} src={logo} />
    </HeaderNav>
 )
 
