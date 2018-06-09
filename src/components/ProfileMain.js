@@ -32,8 +32,8 @@ function ProfileMain(props) {
 
       <Grid container spacing={40} justify="center">
           <Grid item xs={12} sm={4}>
-           <Paper elevation={4} style={{'padding':'10px', 'padding-bottom':'0px'}}>
-             <img src={me} style={{'width':'100%', 'margin-bottom':'5px'}} />
+           <Paper elevation={4} style={{'padding':'10px', 'paddingBottom':'0px'}}>
+             <img className="logo" src={me} style={{'marginBottom':'5px'}} />
            </Paper>
 
 
