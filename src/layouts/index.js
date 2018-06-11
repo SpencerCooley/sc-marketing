@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header.js"
 import WrapperMain from "./WrapperMain.js"
 import Helmet from "react-helmet"
-import me from "../images/me2sm.jpg"
+import me from "../images/me3sm.jpg"
 
 export default ({ children }) => (
   <div>
