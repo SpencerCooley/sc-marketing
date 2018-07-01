@@ -1,0 +1,1234 @@
+openapi: 3.0.0
+
+# to find a resource specific endpoint
+# search
+# --{RESOURCE_NAME}--START
+# --{RESOURCE_NAME}--END
+
+info:
+  title: NovaDine API
+  contact:
+    name: NovaDine Development
+    email: dev@novadine.com
+  version: "2.0.0"
+  description: |
+    This is a description of the API.
+tags:
+  - name: Stores
+    description: |
+      This is a description of the Restaurants resource.
+  - name: Orders
+    description: |
+      This is a description of the Orders resource.
+  - name: Customers
+    description: |
+      This is a description of the Customers resource
+
+
+externalDocs:
+  description: You can include links to user docs or our main website.
+  url: 'http://www.novadine.com'
+
+paths:
+
+  # STORES ENDPOINTS --Stores--START
+  '/stores':
+    get:
+      summary: get a list of stores by search parameters.
+      parameters:
+        - in: query
+          name: store_id
+          schema:
+           type: integer
+
+
+      tags:
+        - Stores
+      responses:
+        '500':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'error': string }
+
+
+
+
+  '/stores/{store_id}':
+    get:
+      summary: get a single store by id
+      parameters:
+        - in: query
+          name: store_id
+          schema:
+           type: integer
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Store'
+        '404':
+          content:
+            text/html:
+              schema:
+                type: <error page>
+
+
+  '/stores/{store_id}/hours':
+    get:
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+
+  '/stores/{store_id}/menu':
+    get:
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  '/stores/{store_id}/base_menus':
+    get:
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  '/stores/{store_id}/menus':
+    get:
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  '/stores/{store_id}/orders':
+    get:
+      tags:
+        - Stores
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+
+
+  # ENDS STORES ENDPOINTS --Stores--END
+
+
+  #ORDERS ENDPOINTS ---Orders--START
+  '/orders':
+    post:
+      tags:
+        - Orders
+      response:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  '/orders/search':
+    post:
+      tags:
+        - Orders
+      response:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+  '/orders/{order_id}/cancel':
+    post:
+      tags:
+        - Orders
+      response:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  #ENDS ORDERS ENDPOINTS ---Orders--END
+
+
+
+  #CUSTOMER ENDPOINTS --Customer--START
+  'customers/{customer_id}':
+    get:
+      tags:
+        - Customers
+      summary: get customer info
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  'customers/{customer_id}/restaurants/{restaurant_id}/favorite_restaurant':
+    delete:
+      tags:
+        - Customers
+      summary: delete a restaurant from a customer's favorites
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  'customers/{customer_id}/addresses':
+    post:
+      tags:
+        - Customers
+      summary: add customer address
+      response:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: object
+                example: {'hello':'world'}
+
+  #ENDS CUSTOMNER ENDPOINTS --Customer--END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  # /restaurants:
+  #   get:
+  #     tags:
+  #       - Restaurants
+  #     summary: Search restaurants.
+  #     operationId: search_restaurants
+  #     parameters:
+  #       - name: store_id
+  #         in: query
+  #         schema:
+  #           type: string
+  #       - name: latitude
+  #         in: query
+  #         schema:
+  #           type: number
+  #       - name: longitude
+  #         in: query
+  #         schema:
+  #           type: number
+  #       - name: city
+  #         in: query
+  #         schema:
+  #           type: string
+  #       - name: state
+  #         in: query
+  #         schema:
+  #           type: string
+  #       - name: postal_code
+  #         in: query
+  #         schema:
+  #           type: string
+  #     responses:
+  #       '200':
+  #         description: The search was completed successfully.
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: object
+  #               properties:
+  #                 restaurants:
+  #                   type: array
+  #                   items:
+  #                     $ref: '#/components/schemas/Restaurant'
+
+
+
+
+components:
+#   parameters:
+#     path-store_id:
+#       name: store_id
+#       in: path
+#       description: store ID
+#       required: true
+#       schema:
+#         type: string
+#     path-order_id:
+#       name: order_id
+#       in: path
+#       description: order ID
+#       required: true
+#       schema:
+#         type: string
+#     path-order_item_id:
+#       name: order_item_id
+#       in: path
+#       description: order ID
+#       required: true
+#       schema:
+#         type: string
+#     path-payment_id:
+#       name: payment_id
+#       in: path
+#       description: payment ID
+#       required: true
+#       schema:
+#         type: string
+#   requestBodies:
+#     complete_orderCancellation:
+#       content:
+#         application/json:
+#           schema:
+#             type: object
+#             properties:
+#               reason:
+#                 type: string
+#       required: true
+#     OrderItemArray:
+#       content:
+#         application/json:
+#           schema:
+#             type: array
+#             items:
+#               $ref: '#/components/schemas/OrderItem'
+#       required: true
+  schemas:
+    Address:
+      type: object
+      required:
+        - address1
+        - city
+        - state
+        - postal_code
+        - phone
+      properties:
+        address1:
+          type: string
+          example: 1400 Sunday Dr
+        address2:
+          type: string
+          example: Suite 103
+        address3:
+          type: string
+          example: ''
+        city:
+          type: string
+          example: Raleigh
+        state:
+          type: string
+          example: NC
+        postal_code:
+          type: string
+          example: '27607'
+        phone:
+          type: string
+          example: 919-555-1234
+        latitude:
+          type: number
+          example: 35.7984187
+        longitude:
+          type: number
+          example: -78.7332941
+    Hours:
+      type: "object"
+      properties:
+        start_time:
+          type: "string"
+          example: "10:30"
+        display_name:
+          type: "string"
+          example: "Monday"
+        end_time:
+          type: "string"
+          example: "22:00"
+        day_of_week:
+          type: "number"
+          example: 0
+
+    Store:
+      type: object
+      properties:
+        postal_code:
+          type: "string"
+          example: "75081"
+        allow_group_orders:
+          type: "boolean"
+          example: true
+        id:
+          type: "string"
+          example: "1955"
+        city:
+          type: "string"
+          example: "Richardson"
+        state:
+          type: "string"
+          example: "TX"
+        latitude:
+          type: "number"
+          example: 32.9418683
+        fax:
+          type: "string"
+          example: "9722348119"
+        address1:
+          type: "string"
+          example: "507 S. Plano Rd."
+        address2:
+          type: "string"
+          example: ""
+        today_hours:
+          type: "string"
+          example: "10:30 AM - 10:00 PM"
+        call_center_only:
+          type: "boolean"
+          example: false
+        test_store:
+          type: "boolean"
+          example: false
+        active:
+          type: "boolean"
+          example: true
+        timezone_offset_mins:
+          type: "number"
+          example: -240
+        distance:
+          type: "number"
+          example: 0
+        name:
+          type: "string"
+          example: "Plano & Beltline"
+        phone:
+          type: "string"
+          example: "9722348118"
+        special_instructions_max_length:
+          type: "number"
+          example: 25
+        country:
+          type: "string"
+          example: "US"
+        hours:
+          type: "array"
+          items:
+            - $ref:'#/components/schemas/Hours'
+        time_zone:
+          type: "string"
+          example: "GMT-5"
+        longitude:
+          type: "number"
+          example: -96.6998186
+        local_time:
+          type: "string"
+          example: "2018-06-29T10:47:34.829221"
+        is_open:
+          type: "boolean"
+          example: true
+
+
+    # Customer:
+#       type: object
+#       properties:
+#         customer_id:
+#           type: string
+#         email:
+#           type: string
+#         first_name:
+#           type: string
+#         last_name:
+#           type: string
+#         phone:
+#           type: string
+#         company_name:
+#           type: string
+#         occupation:
+#           type: string
+#       additionalProperties: false
+#       required:
+#         - company_name
+#         - customer_id
+#         - email
+#         - first_name
+#         - last_name
+#         - phone
+#     CustomerLocation:
+#       allOf:
+#         - type: object
+#           required:
+#             - customer_location_id
+#           properties:
+#             customer_location_id:
+#               type: string
+#             description:
+#               type: string
+#         - $ref: '#/components/schemas/Address'
+#     Order:
+#       type: object
+#       properties:
+#         store_id:
+#           type: string
+#         service_type_id:
+#           type: string
+#         is_asap:
+#           type: boolean
+#           default: false
+#         ready_time:
+#           type: string
+#           format: date-time
+#         delivery:
+#           $ref: '#/components/schemas/Delivery'
+#         notes:
+#           $ref: '#/components/schemas/OrderNotes'
+#         items:
+#           type: array
+#           items:
+#             $ref: '#/components/schemas/OrderItem'
+#       additionalProperties: false
+#     ExpandedOrder:
+#       type: object
+#       title: Order
+#       required:
+#         - notes
+#         - items
+#         - charges
+#         - payments
+#         - status
+#         - actions
+#         - related
+#       allOf:
+#         - $ref: '#/components/schemas/Order'
+#         - properties:
+#             items:
+#               type: array
+#               items:
+#                 $ref: '#/components/schemas/ExpandedOrderItem'
+#             charges:
+#               $ref: '#/components/schemas/Charges'
+#             payments:
+#               type: array
+#               items:
+#                 $ref: '#/components/schemas/ExpandedPayment'
+#             group_ordering:
+#               $ref: '#/components/schemas/GroupOrdering'
+#             ordering_control:
+#               type: object
+#               properties:
+#                 is_tip_allowed:
+#                   type: boolean
+#                 suggested_tip_percentage:
+#                   type: number
+#                   example: 15
+#                 is_checkin_available:
+#                   type: boolean
+#                 is_restaurant_changeable:
+#                   type: boolean
+#                 is_ready_time_changeable:
+#                   type: boolean
+#         - $ref: '#/components/schemas/CombinedOrderStatus'
+#         - properties:
+#             history:
+#               type: array
+#               items:
+#                 $ref: '#/components/schemas/OrderHistory'
+#               example:
+#                 - time: '2017-01-05T12:34:00Z'
+#                   username: customer@example.com
+#                   reason: customer completed checkout
+#                   status_changes:
+#                     order_status:
+#                       color: '#f00000'
+#                       label: Unacknowledged
+#                     ordering_status:
+#                       is_checked_out: true
+#                       is_finalized: true
+#                     preparation_status:
+#                       is_released: true
+#                 - time: '2017-01-05T12:35:54Z'
+#                   username: agent@example.com
+#                   reason: submitted to POS
+#                   status_changes:
+#                     order_status:
+#                       color: '#aaffaa'
+#                       label: Sent to POS
+#                     preparation_status:
+#                       is_acknowledged: true
+#                       is_received: true
+#             errors:
+#               $ref: '#/components/schemas/OrderErrors'
+#       additionalProperties: false
+#     Delivery:
+#       type: object
+#       required:
+#         - address
+#       properties:
+#         address:
+#           $ref: '#/components/schemas/Address'
+#     ExpandedDelivery:
+#       type: object
+#       allOf:
+#         - $ref: '#/components/schemas/Delivery'
+#     OrderNotes:
+#       type: object
+#       properties:
+#         comments_to_restaurant:
+#           type: string
+#         internal_notes:
+#           type: string
+#         po_number:
+#           type: string
+#         table_number:
+#           type: string
+#         guest_count:
+#           type: integer
+#       additionalProperties: false
+#     OrderItem:
+#       type: object
+#       required:
+#         - item_config_id
+#       properties:
+#         item_config_id:
+#           type: string
+#         pick_list_id:
+#           type: string
+#         quantity:
+#           type: integer
+#           minimum: 0
+#           default: 1
+#         ref_name:
+#           type: string
+#         comment:
+#           type: string
+#         child_items:
+#           type: array
+#           items:
+#             $ref: '#/components/schemas/OrderItem'
+#       additionalProperties: false
+#     ExpandedOrderItem:
+#       type: object
+#       required:
+#         - child_items
+#         - comment
+#         - description
+#         - external_id
+#         - item_config_id
+#         - item_name
+#         - order_item_id
+#         - quantity
+#         - ref_name
+#         - ticket_text
+#         - unit_price
+#       allOf:
+#         - $ref: '#/components/schemas/OrderItem'
+#         - properties:
+#             order_item_id:
+#               type: string
+#             pick_list_type:
+#               type: string
+#             pick_list_external_id:
+#               type: string
+#             child_items:
+#               type: array
+#               items:
+#                 $ref: '#/components/schemas/ExpandedOrderItem'
+#             external_id:
+#               type: string
+#             item_name:
+#               type: string
+#             ticket_text:
+#               type: string
+#             description:
+#               type: string
+#             unit_price:
+#               type: number
+#       additionalProperties: false
+#     Charges:
+#       required:
+#         - balance_cents
+#         - delivery_cents
+#         - discount_cents
+#         - other_paid_cents
+#         - paid_cents
+#         - preauth_cents
+#         - remaining_cents
+#         - subtotal_cents
+#         - tax_cents
+#         - tip_cents
+#         - total_cents
+#       type: object
+#       properties:
+#         subtotal_cents:
+#           type: integer
+#         discount_cents:
+#           type: integer
+#         delivery_cents:
+#           type: integer
+#         tax_cents:
+#           type: integer
+#         tip_cents:
+#           type: integer
+#         total_cents:
+#           type: integer
+#         other_paid_cents:
+#           type: integer
+#         preauth_cents:
+#           type: integer
+#         paid_cents:
+#           type: integer
+#         balance_cents:
+#           type: integer
+#         remaining_cents:
+#           type: integer
+#       additionalProperties: false
+#     OrderErrors:
+#       type: object
+#       properties:
+#         need_more_time:
+#           type: string
+#       additionalProperties: false
+#     GroupOrdering:
+#       type: object
+#       required:
+#         - group_order_id
+#         - is_master_order
+#         - is_originator
+#         - originator_name
+#         - cutoff_time
+#         - spending_limit_cents
+#       properties:
+#         group_order_id:
+#           type: string
+#         originator_name:
+#           type: string
+#         is_master_order:
+#           type: boolean
+#           default: false
+#         is_originator:
+#           type: boolean
+#           default: false
+#         cutoff_time:
+#           type: string
+#           format: date-time
+#         spending_limit_cents:
+#           type: integer
+#       additionalProperties: false
+#     OrderStatus:
+#       type: object
+#       properties:
+#         is_completed:
+#           type: boolean
+#           default: false
+#           description: The order has been fulfilled and no further processing is required.
+#         is_canceled:
+#           type: boolean
+#           default: false
+#           description: The order has been canceled and should not be fulfilled.
+#         color:
+#           type: string
+#           example: '#ff8080'
+#         label:
+#           type: string
+#           example: Out for delivery
+#     OrderingStatus:
+#       type: object
+#       properties:
+#         is_valid:
+#           type: boolean
+#           default: false
+#           description: >-
+#             The order passes validity checks and can by checked out and paid for
+#             by the customer.
+#         is_checked_out:
+#           type: boolean
+#           default: false
+#           description: The order has been finished and paid for by the customer.
+#         is_finalized:
+#           type: boolean
+#           default: false
+#           description: >-
+#             The order has been finalized and is ready to be viewed by the
+#             restaurant.
+#     PreparationStatus:
+#       type: object
+#       properties:
+#         is_acknowledged:
+#           type: boolean
+#           default: false
+#           description: The existence of the order has been acknowledged by the restaurant.
+#         is_released:
+#           type: boolean
+#           default: false
+#           description: >-
+#             The time has been reached to send the order to the restaurant.
+#             Typically this means the order preparation time has been reached but
+#             the timing can vary based on the restaurant fulfillment system or
+#             manual actions.
+#         is_received:
+#           type: boolean
+#           default: false
+#           description: The order has been handed over to the restaurant for preparation.
+#         is_started:
+#           type: boolean
+#           default: false
+#           description: Order preparation has started.
+#         is_finished:
+#           type: boolean
+#           default: false
+#           description: Order preparation has finished.
+#     CheckinStatus:
+#       type: object
+#       properties:
+#         is_checked_in:
+#           type: boolean
+#           default: false
+#           description: The customer (or driver) has checked-in at the restaurant.
+#         parking_space:
+#           type: string
+#           example: '3'
+#         vehicle:
+#           type: object
+#           properties:
+#             make:
+#               type: string
+#               example: Chevy
+#             model:
+#               type: string
+#               example: Pickup
+#             color:
+#               type: string
+#               example: Blue
+#     DeliveryStatus:
+#       type: object
+#       properties:
+#         is_committed:
+#           type: boolean
+#           default: false
+#           description: Someone has committed to deliver the order.
+#         is_assigned:
+#           type: boolean
+#           default: false
+#           description: A driver has been assigned to the delivery.
+#         is_picked_up:
+#           type: boolean
+#           default: false
+#           description: The order has been picked-up for delivery.
+#         is_dropped_off:
+#           type: boolean
+#           default: false
+#           description: The order has been dropped-off with the customer.
+#         pickup_time:
+#           type: string
+#           format: date-time
+#         dropoff_time:
+#           type: string
+#           format: date-time
+#         driver_location:
+#           type: object
+#           properties:
+#             latitude:
+#               type: number
+#             longitude:
+#               type: number
+#     CombinedOrderStatus:
+#       type: object
+#       properties:
+#         order_status:
+#           $ref: '#/components/schemas/OrderStatus'
+#         ordering_status:
+#           $ref: '#/components/schemas/OrderingStatus'
+#         preparation_status:
+#           $ref: '#/components/schemas/PreparationStatus'
+#         checkin_status:
+#           $ref: '#/components/schemas/CheckinStatus'
+#         delivery_status:
+#           $ref: '#/components/schemas/DeliveryStatus'
+#     OrderHistoryEntry:
+#       type: object
+#       properties:
+#         time:
+#           type: string
+#           format: date-time
+#         status_changes:
+#           $ref: '#/components/schemas/CombinedOrderStatus'
+#         reason:
+#           type: string
+#         username:
+#           type: string
+#     OrderHistory:
+#       type: array
+#       items:
+#         $ref: '#/components/schemas/OrderHistoryEntry'
+#     OrderSearch:
+#       type: object
+#       properties:
+#         store_id:
+#           type: string
+#         preparation_status:
+#           $ref: '#/components/schemas/PreparationStatus'
+#     OrderSearchResult:
+#       type: object
+#       required:
+#         - order_id
+#         - store_id
+#         - ready_time
+#         - is_delivery
+#         - status
+#       allOf:
+#         - properties:
+#             order_id:
+#               type: string
+#             store_id:
+#               type: string
+#             ready_time:
+#               type: string
+#               format: date-tme
+#             is_delivery:
+#               type: boolean
+#               default: false
+#         - $ref: '#/components/schemas/CombinedOrderStatus'
+#     RestaurantService:
+#       type: object
+#       required:
+#         - service_type_id
+#         - name
+#         - description
+#         - requires_address
+#         - upcoming_schedule
+#         - lead_time_mins
+#       properties:
+#         service_type_id:
+#           type: string
+#         name:
+#           type: string
+#         description:
+#           type: string
+#         requires_address:
+#           type: boolean
+#           default: false
+#         upcoming_schedule:
+#           $ref: '#/components/schemas/Schedule'
+#         lead_time_mins:
+#           type: integer
+#       additionalProperties: false
+#     Schedule:
+#       type: array
+#       items:
+#         type: object
+#         properties:
+#           start_time:
+#             type: integer
+#           end_time:
+#             type: integer
+#       additionalProperties: false
+    Restaurant:
+      type: object
+      required:
+        - store_id
+        - name
+        - address
+        - business_hours
+        - current_time
+        - time_zone_offset_mins
+        - available_services
+        - badges
+      properties:
+        store_id:
+          type: string
+          example: '0001'
+        name:
+          type: string
+          example: Test Location
+        address:
+          $ref: '#/components/schemas/Address'
+        business_hours:
+          type: object
+          required:
+            - Su
+            - Mo
+            - Tu
+            - We
+            - Th
+            - Fr
+            - Sa
+          properties:
+            Su:
+              type: string
+              example: '11:00am - 10:00pm'
+            Mo:
+              type: string
+              example: '8:00am - 11:00pm'
+            Tu:
+              type: string
+              example: '8:00am - 11:00pm'
+            We:
+              type: string
+              example: '8:00am - 11:00pm'
+            Th:
+              type: string
+              example: '8:00am - 11:00pm'
+            Fr:
+              type: string
+              example: '8:00am - 1:00am'
+            Sa:
+              type: string
+              example: '8:00am - 1:00am'
+          additionalProperties: false
+        current_time:
+          type: string
+          format: date-time
+        time_zone_offset_mins:
+          type: integer
+        available_services:
+          type: object
+          additionalProperties:
+            type: boolean
+            default: false
+          example:
+            Pick Up: true
+            Delivery: false
+        badges:
+          type: array
+          items:
+            type: object
+            properties:
+              FIXME:
+                type: integer
+      additionalProperties: false
+
+#     Payment:
+#       type: object
+#       required:
+#         - payment_type_id
+#         - payment_cents
+#         - remaining_cents_check
+#       properties:
+#         payment_type_id:
+#           type: string
+#         payment_cents:
+#           type: integer
+#           example: 1459
+#         remaining_cents_check:
+#           type: integer
+#           example: 1459
+#         payment_account_id:
+#           type: string
+#         card_number:
+#           type: string
+#         security_code:
+#           type: string
+#       additionalProperties: false
+#     AvailableMenus:
+#       required:
+#         - menus
+#         - ok
+#       properties:
+#         menus:
+#           type: array
+#           items:
+#             type: object
+#             properties:
+#               menu_id:
+#                 type: number
+#                 example: 1
+#               menu_name:
+#                 type: string
+#                 example: Main Menu
+#               mode_id:
+#                 type: number
+#                 example: 1
+#               categories:
+#                 type: array
+#                 items:
+#                   type: object
+#                   properties:
+#                     name:
+#                       type: string
+#                       example: Regular Menu
+#                     items:
+#                       type: array
+#                       items:
+#                         type: object
+#                         properties:
+#                           name:
+#                             type: string
+#                             example: Plate
+#                           image_urls:
+#                             required:
+#                               - thumbnail_mobile
+#                               - standard_mobile
+#                               - thumbnail
+#                               - standard
+#                             properties:
+#                               thumbnail_mobile:
+#                                 type: string
+#                                 example: >-
+#                                   https://panda-dev-sc.novadine.com/menu_image/item_2516_mobile,90x92
+#                               standard_mobile:
+#                                 type: string
+#                                 example: >-
+#                                   https://panda-dev-sc.novadine.com/menu_image/item_2516_mobile,320x216
+#                               thumbnail:
+#                                 type: string
+#                                 example: >-
+#                                   https://panda-dev-sc.novadine.com/menu_image/item_2516,480x480
+#                               standard:
+#                                 type: string
+#                                 example: >-
+#                                   https://panda-dev-sc.novadine.com/menu_image/item_2516,480x480
+#                             type: object
+#                           short_description:
+#                             type: string
+#                             example: Any 1 Side & 2 Entrees
+#                           thumbnail_url:
+#                             type: string
+#                             example: >-
+#                               https://panda-dev-sc.novadine.com/menu_image/item_2516,480x480
+#                           image_url:
+#                             type: string
+#                             example: >-
+#                               https://panda-dev-sc.novadine.com/menu_image/item_2516,480x480
+#                           item_id:
+#                             type: number
+#                             example: 2516
+#                           long_description:
+#                             type: string
+#                             example: Choose Any 1 Side & 2 Entrees
+#                           base_price:
+#                             type: number
+#                             example: 710
+#                     image:
+#                       type: string
+#                       example: cat_145
+#                     display_hints:
+#                       required:
+#                         - show_section_titles
+#                         - categories_title
+#                         - items_title
+#                         - featured_title
+#                       properties:
+#                         show_section_titles:
+#                           type: boolean
+#                           example: true
+#                         categories_title:
+#                           type: string
+#                           example: Add More
+#                         items_title:
+#                           type: string
+#                           example: Build Your Own
+#                         featured_title:
+#                           type: string
+#                           example: Panda Favorites
+#                       type: object
+#                     image_urls:
+#                       required:
+#                         - thumbnail_mobile
+#                         - standard_mobile
+#                         - thumbnail
+#                         - icon
+#                         - standard
+#                       properties:
+#                         thumbnail_mobile:
+#                           type: string
+#                           example: >-
+#                             https://panda-dev-sc.novadine.com/menu_image/cat_145_mobile,90x92
+#                         standard_mobile:
+#                           type: string
+#                           example: >-
+#                             https://panda-dev-sc.novadine.com/menu_image/cat_145_mobile,320x216
+#                         thumbnail:
+#                           type: string
+#                           example: >-
+#                             https://panda-dev-sc.novadine.com/menu_image/cat_145,480x480
+#                         standard:
+#                           type: string
+#                           example: >-
+#                             https://panda-dev-sc.novadine.com/menu_image/cat_145,480x480
+#                       type: object
+#                     is_bulk_view:
+#                       type: boolean
+#                       example: false
+#                     thumbnail_url:
+#                       type: string
+#                       example: >-
+#                         https://panda-dev-sc.novadine.com/menu_image/cat_145,480x480
+#                     image_url:
+#                       type: string
+#                       example: >-
+#                         https://panda-dev-sc.novadine.com/menu_image/cat_145,480x480
+#                     category_id:
+#                       type: number
+#                       example: 145
+#                     is_st_default:
+#                       type: boolean
+#                       example: true
+#               default_category_id:
+#                 type: number
+#                 example: 145
+#         ok:
+#           type: string
+#           example: found 1 menu(s)
+#     ExpandedPayment:
+#       type: object
+#       required:
+#         - payment_id
+#         - payment_type_id
+#         - payment_cents
+#         - is_card
+#       properties:
+#         payment_id:
+#           type: string
+#           example: bed04042-d3ab-48df-9465-7ef2f66efee3
+#         payment_type_id:
+#           type: string
+#         payment_cents:
+#           type: integer
+#           example: 1459
+#         is_card:
+#           type: boolean
+#         payment_account_id:
+#           type: string
+#         is_pending:
+#           type: boolean
+#           default: false
+#         error:
+#           type: string
+#           example: The charge was declined by the card issuer.
+#       additionalProperties: false

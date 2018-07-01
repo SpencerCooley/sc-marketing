@@ -4,7 +4,7 @@ import ProfileMain from "../components/ProfileMain.js"
 import Header from "../components/Header.js"
 
 //styles
-import WrapperMain from "../layouts/WrapperMain.js"
+
 
 
 
